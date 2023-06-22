@@ -117,6 +117,20 @@ class Tree {
 
     return node;
   }
+
+  delete(value, node = this.root) {
+    if (node === null) {
+      return node;
+    }
+
+    if (node.data > value) {
+      node.left = this.delete(value, node.left);
+      return node;
+    } else if (node.data < value) {
+      node.right = this.delete(value, node.right);
+      return node;
+    }
+  }
 }
 
 export { TNode, Tree };
