@@ -5,7 +5,6 @@ module.exports = {
   mode: "development",
   entry: {
     script: "./src/script.js",
-    mainFuncs: "./src/mainFuncs.js",
     drawFunc: "./src/drawTree.js",
     classFuncs: "./src/classFuncs.js",
   },
