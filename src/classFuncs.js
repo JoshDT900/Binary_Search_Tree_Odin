@@ -8,9 +8,9 @@ class TNode {
 
 class Tree {
   constructor() {
-    this.root = this.#buildTree(this.#removeDuplicate(this.#randomArr()));
+    this.root = this.#buildTree([10, 12, 14, 15, 26, 45, 66, 78, 5456, 414321]);
   }
-
+  /*this.#removeDuplicate(this.#randomArr()*/
   #sort(arr) {
     if (arr.length < 2) {
       return arr;
@@ -102,33 +102,58 @@ class Tree {
     return this.find(value, root.left);
   }
 
-  insert(value, node = this.root) {
-    if (node === null) {
+  insert(value, root = this.root) {
+    if (root === null) {
       return new TNode(value);
-    } else if (node.data === value) {
+    } else if (root.data === value) {
       throw new Error("Node exists in tree.");
     }
 
-    if (value < node.data) {
-      node.left = this.insert(value, node.left);
+    if (value < root.data) {
+      root.left = this.insert(value, root.left);
     } else {
-      node.right = this.insert(value, node.right);
+      root.right = this.insert(value, root.right);
     }
 
-    return node;
+    return root;
   }
 
-  delete(value, node = this.root) {
-    if (node === null) {
-      return node;
+  delete(value, root = this.root) {
+    if (root === null) {
+      return root;
     }
 
-    if (node.data > value) {
-      node.left = this.delete(value, node.left);
-      return node;
-    } else if (node.data < value) {
-      node.right = this.delete(value, node.right);
-      return node;
+    if (root.data > value) {
+      root.left = this.delete(value, root.left);
+      return root;
+    } else if (root.data < value) {
+      root.right = this.delete(value, root.right);
+      return root;
+    }
+
+    if (root.left === null) {
+      let temp = root.right;
+      return temp;
+    } else if (root.right === null) {
+      let temp = root.left;
+      return temp;
+    } else {
+      let succParent = root;
+
+      let succ = root.right;
+      while (succ.left !== null) {
+        succParent = succ;
+        succ = succ.left;
+      }
+
+      if (succParent !== root) {
+        succParent.left = succ.right;
+      } else {
+        succParent.right = succ.right;
+      }
+
+      root.data = succ.data;
+      return root;
     }
   }
 }
