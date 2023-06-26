@@ -200,18 +200,49 @@ class Tree {
       return stack;
     }
   }
+
+  preOrder(callbackFunc, root = this.root, stack = []) {
+    if (root === null) {
+      return root;
+    }
+
+    if (callbackFunc) {
+      callbackFunc(root);
+    }
+    stack.push(root.data);
+    this.inOrder(callbackFunc, root.left, stack);
+    this.inOrder(callbackFunc, root.right, stack);
+
+    if (!callbackFunc) {
+      console.log(stack);
+      return stack;
+    }
+  }
+
+  postOrder(callbackFunc, root = this.root, stack = []) {
+    if (root === null) {
+      return root;
+    }
+
+    this.inOrder(callbackFunc, root.left, stack);
+    this.inOrder(callbackFunc, root.right, stack);
+    if (callbackFunc) {
+      callbackFunc(root);
+    }
+    stack.push(root.data);
+
+    if (!callbackFunc) {
+      console.log(stack);
+      return stack;
+    }
+  }
 }
 
 export { TNode, Tree };
 
 /*
   #### PSUEDO CODE ####
-  check node, 
-    if node has a left child, put it in the queue
-    if node has a right child, put it in to queue
-  go to next in queue
-    if null, return
-    otherwise, return to step one
+  
   
 
-  */
+*/

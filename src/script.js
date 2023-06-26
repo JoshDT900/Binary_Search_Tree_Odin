@@ -8,5 +8,7 @@ newTree.delete(66)
 newTree.delete(12)
 
 newTree.inOrder()
+newTree.preOrder()
+newTree.postOrder()
 
 prettyPrint(newTree.root)
