@@ -182,6 +182,24 @@ class Tree {
       return orderList;
     }
   }
+
+  inOrder(callbackFunc, root = this.root, stack = []) {
+    if (root === null) {
+      return root;
+    }
+
+    this.inOrder(callbackFunc, root.left, stack);
+    if (callbackFunc) {
+      callbackFunc(root);
+    }
+
+    stack.push(root.data);
+    this.inOrder(callbackFunc, root.right, stack);
+
+    if (!callbackFunc) {
+      return stack;
+    }
+  }
 }
 
 export { TNode, Tree };

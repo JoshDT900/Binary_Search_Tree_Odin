@@ -7,6 +7,6 @@ newTree.insert(44)
 newTree.delete(66)
 newTree.delete(12)
 
-newTree.levelOrder()
+newTree.inOrder()
 
 prettyPrint(newTree.root)
