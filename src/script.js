@@ -4,10 +4,9 @@ import prettyPrint from "./drawTree";
 let newTree = new Tree();
 newTree.insert(43);
 newTree.insert(44)
-
 newTree.delete(66)
-newTree.delete(78)
+newTree.delete(12)
 
-console.log(newTree);
+newTree.levelOrder()
 
 prettyPrint(newTree.root)

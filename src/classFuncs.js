@@ -156,6 +156,44 @@ class Tree {
       return root;
     }
   }
+
+  levelOrder(callbackFunc) {
+    let queue = [this.root];
+    let orderList = [];
+
+    while (queue.length > 0) {
+      let currNode = queue.shift();
+
+      if (currNode.left !== null) {
+        queue.push(currNode.left);
+      }
+      if (currNode.right !== null) {
+        queue.push(currNode.right);
+      }
+
+      if (callbackFunc) {
+        callbackFunc(currNode);
+      } else {
+        orderList.push(currNode.data);
+      }
+    }
+
+    if (!callbackFunc) {
+      return orderList;
+    }
+  }
 }
 
 export { TNode, Tree };
+
+/*
+  #### PSUEDO CODE ####
+  check node, 
+    if node has a left child, put it in the queue
+    if node has a right child, put it in to queue
+  go to next in queue
+    if null, return
+    otherwise, return to step one
+  
+
+  */
