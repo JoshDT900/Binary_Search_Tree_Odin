@@ -1,5 +1,4 @@
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -7,11 +6,6 @@ module.exports = {
     script: "./src/script.js",
     classFuncs: "./src/classFuncs.js",
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Binary Search Tree',
-    }),
-  ],
   devtool: "inline-source-map",
   devServer: {
     static: "./dist",
