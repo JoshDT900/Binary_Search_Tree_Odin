@@ -8,9 +8,9 @@ class TNode {
 
 class Tree {
   constructor() {
-    this.root = this.#buildTree([10, 12, 14, 15, 26, 45, 66, 78, 5456, 414321]);
+    this.root = this.#buildTree(this.#removeDuplicate(this.#randomArr()));
   }
-  /*this.#removeDuplicate(this.#randomArr()*/
+
   #sort(arr) {
     if (arr.length < 2) {
       return arr;
@@ -179,7 +179,6 @@ class Tree {
     }
 
     if (!callbackFunc) {
-      console.log(orderList);
       return orderList;
     }
   }
@@ -296,13 +295,10 @@ class Tree {
       return true;
     }
   }
+
+  reBalance() {
+    return this.root = this.#buildTree(this.inOrder());
+  }
 }
 
 export { TNode, Tree };
-
-/*
-  #### PSUEDO CODE ####
-  
-  
-
-*/

@@ -2,13 +2,32 @@ import { Tree } from "./classFuncs";
 
 let newTree = new Tree();
 
-newTree.levelOrder(); // Returns an array of [26, 14, 78, 10, 15, 45, 5456, 43, 414321, 44]
+newTree.insert(434444);
+newTree.insert(4456);
+newTree.insert(500)
+newTree.insert(5647)
+newTree.insert(52554)
 
-console.log(newTree.inOrder());
+newTree.delete(414321);
+newTree.delete(66);
+newTree.delete(15);
+
+
+console.log(newTree.levelOrder());
+console.log(newTree.inOrder()); 
 console.log(newTree.preOrder());
 console.log(newTree.postOrder());
-console.log(newTree.height());
+
+console.log(newTree.height()); 
 console.log(newTree.depth(44));
+
+console.log(newTree.isBalanced()); // Returns false if tree is unbalanced, true otherwise.
+newTree.reBalance() 
 console.log(newTree.isBalanced());
+
+console.log(newTree.levelOrder());
+console.log(newTree.inOrder()); 
+console.log(newTree.preOrder());
+console.log(newTree.postOrder()); 
 
 newTree.prettyPrint();
