@@ -253,7 +253,9 @@ class Tree {
   }
 
   height(root = this.root) {
-    if (root === null) return 0;
+    if (root === null) {
+      return 0;
+    } 
 
     let lHeight = this.height(root.left);
     let rHeight = this.height(root.right);
@@ -277,6 +279,22 @@ class Tree {
     } else {
       return 1 + this.depth(value, root.right)
     }    
+  }
+
+  isBalanced(root = this.root) {
+    if (root === null) {
+      return 0;
+    }
+
+    let lHeight = this.height(root.left);
+    let rHeight = this.height(root.right);
+    let difference = Math.abs(lHeight - rHeight)
+
+    if (difference > 1) {
+      return false
+    } else {
+      return true;
+    }
   }
 }
 
