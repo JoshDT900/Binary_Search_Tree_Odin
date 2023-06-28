@@ -198,7 +198,7 @@ class Tree {
 
     if (!callbackFunc) {
       return stack;
-    }   
+    }
   }
 
   preOrder(callbackFunc, root = this.root, stack = []) {
@@ -240,12 +240,43 @@ class Tree {
       return;
     }
     if (node.right !== null) {
-      this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+      this.prettyPrint(
+        node.right,
+        `${prefix}${isLeft ? "│   " : "    "}`,
+        false
+      );
     }
     console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
     if (node.left !== null) {
-     this. prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+      this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
     }
+  }
+
+  height(root = this.root) {
+    if (root === null) return 0;
+
+    let lHeight = this.height(root.left);
+    let rHeight = this.height(root.right);
+
+    if (lHeight > rHeight) {
+      return lHeight + 1;
+    } else {
+      return rHeight + 1;
+    }
+  }
+
+  depth(value, root = this.root, depthLevel = 0) {
+    if (root === null) {
+      return null;
+    } else if (root.data === value) {
+      return depthLevel;
+    }
+
+    if (root.data > value) {
+      return 1 + this.depth(value, root.left);
+    } else {
+      return 1 + this.depth(value, root.right)
+    }    
   }
 }
 
